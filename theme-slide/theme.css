@@ -1,0 +1,333 @@
+@charset "UTF-8";
+
+:root {
+  --main-font-family: "Noto Sans CJK JP", "Hiragino Sans", "Meiryo", sans-serif;
+  --code-font-family: "Noto Sans Mono CJK JP", "Andale Mono", monospace;
+  --heading-color: #06a;
+}
+
+:root {
+  font-family: var(--main-font-family);
+  font-size: 150%;
+  line-height: 1.66;
+  text-spacing: auto;
+}
+
+@page {
+  /* width: 180mm (= 210mm - 15mm * 2) */
+  /* height: 124mm (= 148mm - 12mm * 2) */
+  size: 210mm 148mm;
+  margin: 15mm 15mm;
+  font-size: 11pt;
+  line-height: 1.2;
+
+  @top-right-corner {
+    content: counter(page);
+    writing-mode: horizontal-tb;
+  }
+
+  @top-right {
+    content: string(h1title, first-except);
+    margin-inline-end: 10mm;
+    writing-mode: horizontal-tb;
+  }
+}
+
+@page cover {
+  margin: 0;
+
+  @top-right-corner {
+    content: none;
+  }
+
+  @top-right {
+    content: none;
+  }
+}
+
+/* 表紙 */
+section.cover {
+  box-sizing: border-box;
+  background-color: #212057;
+  background-image: url(header-image.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20mm;
+  color: #fff;
+  block-size: 100vh;
+  inline-size: 100vw;
+  page: cover;
+  writing-mode: horizontal-tb;
+}
+
+section.cover h1 {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding: 0;
+  text-align: center;
+  color: inherit;
+  font-size: 220%;
+  font-weight: 600;
+  font-feature-settings: "palt";
+}
+
+section.cover p {
+  font-size: 130%;
+  font-weight: 500;
+  text-align: center;
+}
+
+section.cover a {
+  color: inherit;
+}
+
+/* 目次 */
+section.toc {
+  break-before: page;
+}
+
+section.toc h1 {
+  color: var(--heading-color);
+  font-size: 120%;
+  font-weight: 600;
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+}
+
+section.toc>ol {
+  font-size: 83%;
+  margin: 0;
+}
+
+section.toc>ol>li {
+  padding-block-start: 0.125em;
+  padding-block-end: 0.125em;
+}
+
+section.toc li a {
+  text-decoration: none;
+}
+
+section.toc ul li a::after {
+  content: "　" target-counter(attr(href url), page);
+}
+
+section.toc>ol>li>ol {
+  font-size: 83%;
+}
+
+/* 自己紹介 */
+section.intro {
+  break-before: page;
+}
+
+section.intro h1 {
+  color: var(--heading-color);
+  font-size: 120%;
+  font-weight: 600;
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+}
+
+/* Section */
+h1 {
+  clear: both;
+  color: var(--heading-color);
+  font-size: 250%;
+  font-weight: 600;
+  break-after: auto;
+  break-before: page;
+  break-inside: avoid;
+  font-feature-settings: "palt";
+  margin-block-start: 3.2rem;
+  string-set: h1title content();
+}
+
+h1:not(.cover):not(.toc):not(.intro) {
+  height: 13rem;
+}
+
+/* Subsections */
+h2 {
+  color: var(--heading-color);
+  font-size: 150%;
+  font-weight: 600;
+  break-after: avoid;
+  break-before: auto;
+  break-inside: avoid;
+  font-feature-settings: "palt";
+  margin-block-end: 0.25em;
+  margin-block-start: 0.25em;
+}
+
+h3 {
+  color: var(--heading-color);
+  font-size: 125%;
+  font-weight: 600;
+  break-inside: avoid;
+}
+
+p {
+  margin-block-start: 0.67em;
+  margin-block-end: 0;
+  text-align: justify;
+}
+
+table p {
+  margin-block-start: 0;
+  text-align: left;
+}
+
+table {
+  margin-block-start: 0.67em;
+  max-width: 100%;
+  border: 1px solid gray;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+}
+
+td,
+th {
+  border: 1px solid gray;
+  padding-block: 2px;
+  padding-inline: 4px;
+}
+
+thead {
+  background: #f6f6f6;
+}
+
+code,
+pre {
+  font-family: var(--code-font-family);
+}
+
+pre {
+  margin-block-start: 0.5em;
+  background-color: #f6f6f6;
+  padding: 0.5em;
+  white-space: pre-wrap;
+  font-size: 83%;
+}
+
+code {
+  font-size: 83%;
+  background-color: #f6f6f6;
+  padding: 0.125em;
+}
+
+ol,
+ul {
+  margin-block-start: 0.67em;
+  padding-inline-start: 1em;
+  text-align: justify;
+}
+
+li ol,
+li ul {
+  margin-block-start: 0;
+}
+
+.float-right {
+  float: right;
+  clear: right;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: 0.5em;
+}
+
+figure {
+  margin-block-start: 0.67em;
+  break-inside: avoid;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 83%;
+  text-align: center;
+}
+
+blockquote {
+  color: #57606a;
+  line-height: 1.33;
+  padding-inline-start: 1em;
+  border-inline-start: 0.25em solid #d0d7de;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-start: 0.67em;
+}
+
+blockquote.example {
+  font-family: YuMincho, Yu Mincho, serif;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  border-inline-start: none;
+  border-block-start: 1px solid silver;
+  border-block-end: 1px solid silver;
+  padding-block: 2px;
+  padding-inline: 0;
+}
+
+blockquote.example p {
+  margin: 0;
+  text-align: justify;
+}
+
+blockquote.example b,
+blockquote.example strong {
+  font-family: YuGochic, Yu Gothic, sans-serif;
+}
+
+a[href^="#"] {
+  color: forestgreen;
+  text-decoration: none;
+}
+
+a[href^="#"]::after {
+  content: "(p." target-counter(attr(href url), page) ")";
+  font-size: 90%;
+}
+
+strong,
+b,
+th,
+dt {
+  font-weight: bold;
+}
+
+#table-projects th {
+  white-space: nowrap;
+}
+
+#table-projects td:last-child {
+  text-align: center;
+}
+
+#table-projects td:first-child {
+  font-weight: 600;
+}
+
+p.project-desc {
+  margin-block-start: 0.3em;
+  font-size: 83%;
+}
+
+p.project-desc+ul {
+  margin-block-start: 0.25em;
+}
+
+p.issues-note {
+  margin: 0;
+  font-size: 90%;
+}
+
+ul+p.issues-note {
+  margin-block-start: 0.25em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

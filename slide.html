@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>楽しくCSS組版を実現するオープンソースプロジェクト</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="theme-slide/theme.css">
+  </head>
+  <body>
+    <section class="level1 cover" id="楽しくcss組版を実現するオープンソースプロジェクト">
+      <h1 class="cover">楽しくCSS組版を実現するオープンソースプロジェクト</h1>
+      <p>第63回出版UD研究会 2022-08-06<br>村上 真雄 (<a href="mailto:murakami@vivliostyle.org">murakami@vivliostyle.org</a>)<br>一般社団法人ビブリオスタイル代表理事</p>
+    </section>
+    <section class="level1 toc" role="doc-toc" id="目次">
+      <h1 class="toc" role="doc-toc">目次</h1>
+      <ul>
+        <li><a href="#css%E7%B5%84%E7%89%88%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B7%E3%83%96%E3%83%AB%E3%81%AAweb%E6%8A%80%E8%A1%93%E3%81%A7%E6%9C%AC%E3%81%8C%E4%BD%9C%E3%82%8C%E3%82%8B">CSS組版＝アクセシブルなWeb技術で本が作れる</a>
+          <ul>
+            <li><a href="#css%E7%B5%84%E7%89%88%E3%81%A8%E3%81%AF">CSS組版とは</a></li>
+            <li><a href="#%E3%83%AF%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A6%E3%83%BC%E3%82%B9%E3%81%AE%E5%87%BA%E7%89%88%E3%81%AB">ワンソース・マルチユースの出版に</a></li>
+          </ul>
+        </li>
+        <li><a href="#vivliostyle-%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E5%8B%95%E3%81%8F%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AEcss%E7%B5%84%E7%89%88%E3%83%84%E3%83%BC%E3%83%AB">Vivliostyle: ブラウザで動くオープンソースのCSS組版ツール</a>
+          <ul>
+            <li><a href="#css%E7%B5%84%E7%89%88%E3%81%AF%E3%81%8B%E3%81%AA%E3%82%8A%E5%89%8D%E3%81%8B%E3%82%89%E5%AE%9F%E7%8F%BE%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E3%81%8C">CSS組版はかなり前から実現していたが…</a></li>
+            <li><a href="#web%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E7%B5%84%E7%89%88">Webブラウザを利用した組版</a></li>
+            <li><a href="#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E9%96%8B%E7%99%BA%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%83%86%E3%82%A3%E3%83%BC">オープンソース開発コミュニティー</a></li>
+            <li><a href="#vivliostyle%E5%88%A9%E7%94%A8%E4%BA%8B%E4%BE%8B%E3%81%AE%E7%B4%B9%E4%BB%8B">Vivliostyle利用事例の紹介</a></li>
+          </ul>
+        </li>
+        <li><a href="#css%E7%B5%84%E7%89%88%E3%82%92%E3%82%82%E3%81%A3%E3%81%A8%E7%B0%A1%E5%8D%98%E3%81%AB%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88vivliostyle-pub">CSS組版をもっと簡単にするためのプロジェクトVivliostyle Pub</a>
+          <ul>
+            <li><a href="#%E4%BB%8A%E3%81%AEvivliostyle-css%E7%B5%84%E7%89%88%E3%83%84%E3%83%BC%E3%83%AB">今のVivliostyle CSS組版ツール</a></li>
+            <li><a href="#%E4%BB%8A%E3%81%AEcss%E7%B5%84%E7%89%88%E3%83%84%E3%83%BC%E3%83%AB%E3%81%AF%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E4%B8%80%E8%88%AC%E3%81%AE%E4%BA%BA%E3%81%AB%E3%81%A8%E3%81%A3%E3%81%A6%E3%81%AF%E9%9B%A3%E3%81%97%E3%81%84">今のCSS組版ツールはエンジニアではない一般の人にとっては難しい</a></li>
+            <li><a href="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A0%E3%81%91%E3%81%A7%E6%9C%AC%E3%81%8C%E4%BD%9C%E3%82%8C%E3%82%8Bweb%E3%82%A2%E3%83%97%E3%83%AAvivliostyle-pub%E9%96%8B%E7%99%BA%E4%B8%AD">ブラウザだけで本が作れるWebアプリVivliostyle Pub開発中</a></li>
+            <li><a href="#vivliostyle-pub%E3%81%A7%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8">Vivliostyle Pubでできること</a></li>
+            <li><a href="#vivliostyle-pub%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%9F%E6%9C%AC%E3%81%AE%E5%8D%B0%E5%88%B7%E8%A3%BD%E6%9C%AC%E3%81%AB">Vivliostyle Pubで作った本の印刷製本に</a></li>
+            <li><a href="#%E3%81%BE%E3%81%A0%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E7%89%88%E3%81%A0%E3%81%91%E3%81%A9%E3%82%88%E3%82%8D%E3%81%97%E3%81%91%E3%82%8C%E3%81%B0%E3%81%A9%E3%81%86%E3%81%9E">まだアルファ版だけど、よろしければどうぞ</a></li>
+            <li><a href="#%E9%96%8B%E7%99%BA%E3%81%8C%E9%A0%86%E8%AA%BF%E3%81%AB%E9%80%B2%E3%82%80%E3%82%88%E3%81%86%E3%81%AB%E5%BF%9C%E6%8F%B4%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F">開発が順調に進むように、応援よろしく！</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section class="level1 intro" id="自己紹介">
+      <h1 class="intro">自己紹介</h1>
+      <p><ruby>一般社団法人ビブリオスタイル<rt>　　　Vivliostyle Foundation　　　</rt></ruby>　代表理事　<ruby>村上 真雄<rt>むらかみ しんゆう</rt></ruby></p>
+      <ul>
+        <li>1990年ごろ、テキスト整形ツールXTRを開発、公開。それ以来マークアップ言語と組版に関心</li>
+        <li>1999〜2014年、アンテナハウスAH Formatterの開発に従事</li>
+        <li>2014年、株式会社ビブリオスタイル設立。CSS組版ソフトウェアVivliostyle開発プロジェクト開始</li>
+        <li>2018年、<a href="https://vivliostyle.org/ja/">一般社団法人ビブリオスタイル</a>設立。Vivliostyleをコミュニティーベースでのオープンソース開発に移行</li>
+      </ul>
+    </section>
+    <section id="css組版アクセシブルなweb技術で本が作れる" class="level1">
+      <h1>CSS組版＝アクセシブルなWeb技術で本が作れる</h1>
+      <section id="css組版とは" class="level2">
+        <h2>CSS組版とは</h2>
+        <p>CSS組版とは、Webページを記述するのに使われるHTMLとCSSで、本のページの組版を可能にする技術。</p>
+        <ul>
+          <li>HTML：文書の内容のテキストや論理的な構造を記述</li>
+          <li>CSS：文書のスタイル（どのように見せるか）を定義</li>
+        </ul>
+        <p>電子書籍の標準形式であるEPUBも、その中身はHTMLとCSS。（それにその他の必要なファイルをまとめてzip形式で圧縮したもの）</p>
+        <p>WebもEPUBも、アクセシビリティがとても重視されている。</p>
+      </section>
+      <section id="ワンソースマルチユースの出版に" class="level2">
+        <h2>ワンソース・マルチユースの出版に</h2>
+        <p>CSS組版によりHTMLとCSSで紙の本も作れるということは、</p>
+        <ul>
+          <li>Web出版、電子出版、印刷出版すべてHTML+CSSでできる<br>→ワンソース・マルチユースで多様なニーズに対応可能！</li>
+        </ul>
+        <p>読み手のニーズに合わせてスタイル(CSS)を変えられる。例：</p>
+        <ul>
+          <li>文字を大きくしたり、読みやすいフォントに変える</li>
+          <li>色をハイコントラストにする</li>
+          <li>縦書きの本を横書きに変える</li>
+          <li>総ルビにする、分かち書きにする、etc.</li>
+        </ul><!--
+        /* 色をハイコントラストにする */
+        @page {
+          background: black;
+        }
+        :root {
+          color: white;
+        }
+        h1,h2,h3,h4,a {
+          color: yellow !important;
+        }
+        --><!--
+        /* 縦書きに変える */
+        :root {
+          writing-mode: vertical-rl;
+        }
+        -->
+      </section>
+    </section>
+    <section id="vivliostyle-ブラウザで動くオープンソースのcss組版ツール" class="level1">
+      <h1>Vivliostyle: ブラウザで動くオープンソースのCSS組版ツール</h1>
+      <section id="css組版はかなり前から実現していたが" class="level2">
+        <h2>CSS組版はかなり前から実現していたが…</h2>
+        <p>Vivliostyleが生まれる前から、CSS組版は一部では実用化されていた。</p>
+        <p>例えば、XML文書自動組版に利用されているアンテナハウスAH Formatterは、XML専用の組版仕様とともにCSS組版もサポートしており（2009年から）、有名なところでは米オライリー社の書籍制作システムに組み込まれて利用されている。</p>
+        <p>しかし、それは個人が気軽に使える製品ではない。<br>→CSS組版の普及には、だれでもオープンに使えるものが必要</p>
+      </section>
+      <section id="webブラウザを利用した組版" class="level2">
+        <h2>Webブラウザを利用した組版</h2>
+        <p>現在のWebブラウザには、HTML+CSSでの高度なレイアウト機能が備わる。印刷機能を持ち、PDF出力も可能。<br>→ブラウザだけでもCSS組版は可能！</p>
+        <p>しかし、本のページの組版のための機能はCSSのドラフト仕様はあっても（<a href="https://www.w3.org/TR/css-page-3/">CSS Paged Media仕様</a>など）ブラウザにはなかなか実装されない。</p>
+        <p>それなら足りないCSSの組版機能をJavaScriptで実装して、本の組版もブラウザで可能にしよう →Vivliostyleプロジェクト</p>
+      </section>
+      <section id="オープンソース開発コミュニティー" class="level2">
+        <h2>オープンソース開発コミュニティー</h2>
+        <p>2018年から現在の開発体制：コミュニティーベースでオープンな開発。その管理のため一般社団法人ビブリオスタイル設立。</p>
+        <p>ボランティアの開発貢献者たちにより開発が進んでいる。<br>主なコミュニティー活動：</p>
+        <ul>
+          <li><a href="https://vivliostyle.org/ja/community/#slack">Slackコミュニティー</a>と<a href="https://github.com/vivliostyle">GitHub</a>上で開発の議論</li>
+          <li>毎月の開発者会議の開催: <a href="https://github.com/vivliostyle/community/issues?q=label%3Ameeting">これまでの議題・議事録</a></li>
+          <li>年2回<a href="https://vivliostyle.connpass.com/">「Vivliostyleユーザーと開発者の集い」を開催</a>
+            <ul>
+              <li>利用事例の発表、開発状況の報告、開発の議論</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="vivliostyle利用事例の紹介" class="level2">
+        <h2>Vivliostyle利用事例の紹介</h2>
+        <p>年2回の「Vivliostyleユーザーと開発者の集い」でこれまで発表されたVivliostyle利用事例から：</p>
+        <ul>
+          <li>
+            <p>
+              <img src="img/mangadewakaruruby.png" alt="「マンガでわかるRuby」" class="float-right" height="180">「マンガでわかるRuby」のCSS組版・制作秘話（湊川あい＋よう）／<a href="https://connpass.com/event/141767/">開発者とユーザーの集い 2019夏</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <img src="img/krisenmanagement.png" alt="「「Krisenmanagement」" class="float-right" height="180">COVID-19に対する公衆衛生教科書の迅速な出版（ドイツ)／<a href="https://vivliostyle.connpass.com/event/189940/">ユーザーと開発者の集い 2020秋</a>
+            </p>
+            <ul>
+              <li>関連記事：<a href="https://vivliostyle.org/ja/blog/2020/04/10/tib-book-against-covid19/">ドイツ国立科学技術図書館が Vivliostyle により、COVID-19対策の公衆衛生教科書を出版</a></li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              <img src="img/seikihyogen.jpg" alt="『そろそろ常識？マンガでわかる「正規表現」』" class="float-right" height="180">商業出版『そろそろ常識？マンガでわかる「正規表現」』の制作（大津雄一郎）／<a href="https://vivliostyle.connpass.com/event/189940/">ユーザーと開発者の集い 2020秋</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <img src="img/fujiitaiyo.png" alt="藤井大洋氏の小説執筆環境" class="float-right" height="180">小説執筆におけるVivliostyle活用（藤井大洋）／<a href="https://vivliostyle.connpass.com/event/243092/">ユーザーと開発者の集い 2022春</a>
+            </p>
+          </li>
+        </ul>
+      </section>
+    </section>
+    <section id="css組版をもっと簡単にするためのプロジェクトvivliostyle-pub" class="level1">
+      <h1>CSS組版をもっと簡単にするためのプロジェクトVivliostyle Pub</h1>
+      <section id="今のvivliostyle-css組版ツール" class="level2">
+        <h2>今のVivliostyle CSS組版ツール</h2>
+        <p>これまでのVivliostyleプロジェクトの中心は、CSS組版を実現するJavaScriptライブラリ<a href="https://github.com/vivliostyle/vivliostyle.js">Vivliostyle.js</a>と、それを使うための以下のツール：</p>
+        <ul>
+          <li>Vivliostyle Viewer：組版プレビュー用、また電子出版ビューアとしても使える
+            <ul>
+              <li><a href="https://vivliostyle.org/ja/samples/">Vivliostyleサイトのサンプルページ</a>で、Vivliostyle Viewerでの組版サンプルの閲覧ができる</li>
+            </ul>
+          </li>
+          <li>Vivliostyle CLI: 色々使えるCSS組版ツール<br>（CLI＝コマンドライン・インターフェース）
+            <ul>
+              <li>macOSやLinuxやWindowsのターミナル上で使用できる</li>
+              <li>色々な自動処理や、他のシステムに組み込んで利用できる</li>
+              <li>関連するVivliostyleツール：
+                <ul>
+                  <li>Vivliostyleテーマ (<a href="https://github.com/vivliostyle/themes">Vivliostyle Themes</a>): CSS組版スタイルシートをパッケージとして公開／再利用する仕組み</li>
+                  <li>
+                    <a href="https://github.com/vivliostyle/vfm">VFM: Vivliostyle Flavored Markdown</a>: CSS組版用のマークダウン記法
+                    （テキストに簡単な記号を入れて見出しや箇条書きを表現できてHTMLに変換できるもの）
+                  </li>
+                </ul>
+              </li>
+              <li><a href="https://github.com/vivliostyle/create-book">Create Book</a>: Vivliostyle CLIの導入用ツール</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="今のcss組版ツールはエンジニアではない一般の人にとっては難しい" class="level2">
+        <h2>今のCSS組版ツールはエンジニアではない一般の人にとっては難しい</h2>
+        <ul>
+          <li>HTMLとCSSの知識が必要
+            <ul>
+              <li>HTMLを直接書かなくていいようにマークダウン記法をサポートしているが、それでも最低限のHTMLのタグの知識は必要。</li>
+            </ul>
+          </li>
+          <li>コマンドラインでの操作
+            <ul>
+              <li>コマンドラインのツールであるVivliostyle CLIを使うのはエンジニアではない一般の人にとってはハードルが高い。</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="ブラウザだけで本が作れるwebアプリvivliostyle-pub開発中" class="level2">
+        <h2>ブラウザだけで本が作れるWebアプリVivliostyle Pub開発中</h2>
+        <p>アルファ版：<a href="https://vivliostyle-pub-develop.vercel.app/">https://vivliostyle-pub-develop.vercel.app/</a></p>
+        <figure>
+          <img src="img/screenshot-vivpub.png" alt="Vivliostyle Pubで執筆中の画面" height="210">
+          <figcaption aria-hidden="true">Vivliostyle Pubで執筆中の画面</figcaption>
+        </figure>
+      </section>
+      <section id="vivliostyle-pubでできること" class="level2">
+        <h2>Vivliostyle Pubでできること</h2>
+        <ul>
+          <li>無料、インストール不要、Webブラウザだけで本が作れる</li>
+          <li>組版結果をプレビュー確認しながら執筆・編集ができる</li>
+          <li>マークダウン記法で原稿が書ける</li>
+          <li>ページデザインは、テーマから選べる
+            <ul>
+              <li>既存テーマをカスタマイズしたり自分でCSS書いてもよい</li>
+            </ul>
+          </li>
+          <li>Webフォント対応</li>
+          <li>GitHub利用。原稿変更履歴がGitHubに保存される</li>
+          <li>多数の原稿からなる出版物制作、その共同編集作業も可能</li>
+          <li>PDF出力、Web出版物(WebBook)、EPUB生成（予定）</li>
+        </ul>
+      </section>
+      <section id="vivliostyle-pubで作った本の印刷製本に" class="level2">
+        <h2>Vivliostyle Pubで作った本の印刷製本に</h2>
+        <p>
+          <img src="img/mybookphoto.jpg" alt="（Vivliostyle → mybooks PODで印刷製本した本の見本）" class="float-right" height="150">Vivliostyle Pubで作った本の印刷製本がスムーズにできるよう、印刷製本サービスのmybooks POD（欧文印刷株式会社）と提携あり→ <a href="https://pod.mybooks.jp/">https://pod.mybooks.jp/</a>
+        </p>
+        <p>ほかでも、同人誌印刷を扱っている印刷所ならばVivliostyle Pubで出力したPDFからの印刷・製本が可能なはず。</p>
+      </section>
+      <section id="まだアルファ版だけどよろしければどうぞ" class="level2">
+        <h2>まだアルファ版だけど、よろしければどうぞ</h2>
+        <p>現状はまだアルファ版（＝開発途上だけどテストのために公開したもの）で、まだできていない機能が多い：</p>
+        <ul>
+          <li>スタイル・テーマの設定とカスタマイズを簡単に</li>
+          <li>目次作成を簡単に</li>
+          <li>表紙の作成を簡単に</li>
+          <li>印刷用PDFと閲覧用PDFなど、目的別のPDF出力の設定</li>
+          <li>EPUB生成機能、EPUBやWeb出版物での作品公開を簡単に</li>
+          <li>出版物メタデータの設定・編集機能</li>
+        </ul>
+        <p>CSS組版をもっと簡単にして、だれもが使えるものにするのが目標だけれども、今のアルファ版の現状ではまだまだ難しい。</p>
+        <p>当面は「CSS組版」の知識がある程度あるような人たちに（技術同人誌を作る人たちなど）に使ってもらいながら開発を進めて、目標に近づけたい。</p>
+        <p>よろしければ、Vivliostyle Pubアルファ版を使ってみてください→<a href="https://vivliostyle-pub-develop.vercel.app/">https://vivliostyle-pub-develop.vercel.app/</a></p>
+        <p>GitHubアカウントが必要だけれども、<a href="https://vivliostyle.github.io/docs-vivliostyle-pub/#/ja/">Vivliostyle Pubアルファ版ユーザーガイド</a>で、その取得方法から説明してます。</p>
+      </section>
+      <section id="開発が順調に進むように応援よろしく" class="level2">
+        <h2>開発が順調に進むように、応援よろしく！</h2>
+        <p>Vivliostyleはボランティアで開発されているオープンソース・プロジェクト。開発協力者を募集してます！</p>
+        <ul>
+          <li>コミュニティ→ <a href="https://vivliostyle.org/ja/community/">https://vivliostyle.org/ja/community/</a></li>
+        </ul>
+        <p>Vivliostyleのサービスやプロダクトのビジネス利用も歓迎。その相談やサポートについてはお問合せください。→メール窓口<a href="mailto:mail@vivlostyle.org">mail@vivlostyle.org</a></p>
+        <p>私たちについて→ <a href="https://vivliostyle.org/ja/about-us/">https://vivliostyle.org/ja/about-us/</a></p>
+      </section>
+    </section>
+  </body>
+</html>
