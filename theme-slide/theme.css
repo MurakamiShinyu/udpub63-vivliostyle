@@ -55,10 +55,15 @@ section.cover {
   background-size: cover;
   padding: 20mm;
   color: #fff;
-  block-size: 100vh;
-  inline-size: 100vw;
   page: cover;
   writing-mode: horizontal-tb;
+}
+
+@media print {
+  section.cover {
+    block-size: 100vh;
+    inline-size: 100vw;
+  }
 }
 
 section.cover h1 {
@@ -144,8 +149,11 @@ h1 {
   string-set: h1title content();
 }
 
-h1:not(.cover):not(.toc):not(.intro) {
-  height: 13rem;
+
+@media print {
+  h1:not(.cover):not(.toc):not(.intro) {
+    height: 13rem;
+  }
 }
 
 /* Subsections */
