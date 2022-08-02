@@ -7,20 +7,20 @@
 # 目次 {.toc role="doc-toc"}
 
 - [CSS組版＝アクセシブルなWeb技術で本が作れる](#css組版アクセシブルなweb技術で本が作れる)
-  - [CSS組版とは](#css%E7%B5%84%E7%89%88%E3%81%A8%E3%81%AF)
+  - [CSS組版とは](#css組版とは)
   - [ワンソース・マルチユースの出版に](#ワンソースマルチユースの出版に)
-- [Vivliostyle: ブラウザで動くオープンソースのCSS組版ツール](#vivliostyle-%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E5%8B%95%E3%81%8F%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AEcss%E7%B5%84%E7%89%88%E3%83%84%E3%83%BC%E3%83%AB)
-  - [CSS組版はかなり前から実現していたが…](#css%E7%B5%84%E7%89%88%E3%81%AF%E3%81%8B%E3%81%AA%E3%82%8A%E5%89%8D%E3%81%8B%E3%82%89%E5%AE%9F%E7%8F%BE%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E3%81%8C)
-  - [Webブラウザを利用した組版](#web%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E7%B5%84%E7%89%88)
-  - [オープンソース開発コミュニティー](#%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E9%96%8B%E7%99%BA%E3%82%B3%E3%83%9F%E3%83%A5%E3%83%8B%E3%83%86%E3%82%A3%E3%83%BC)
-  - [Vivliostyle利用事例の紹介](#vivliostyle%E5%88%A9%E7%94%A8%E4%BA%8B%E4%BE%8B%E3%81%AE%E7%B4%B9%E4%BB%8B)
-- [CSS組版をもっと簡単にするためのプロジェクトVivliostyle Pub](#css%E7%B5%84%E7%89%88%E3%82%92%E3%82%82%E3%81%A3%E3%81%A8%E7%B0%A1%E5%8D%98%E3%81%AB%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88vivliostyle-pub)
-  - [今のVivliostyle CSS組版ツール](#%E4%BB%8A%E3%81%AEvivliostyle-css%E7%B5%84%E7%89%88%E3%83%84%E3%83%BC%E3%83%AB)
-  - [今のCSS組版ツールはエンジニアではない一般の人にとっては難しい](#%E4%BB%8A%E3%81%AEcss%E7%B5%84%E7%89%88%E3%83%84%E3%83%BC%E3%83%AB%E3%81%AF%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E4%B8%80%E8%88%AC%E3%81%AE%E4%BA%BA%E3%81%AB%E3%81%A8%E3%81%A3%E3%81%A6%E3%81%AF%E9%9B%A3%E3%81%97%E3%81%84)
-  - [ブラウザだけで本が作れるWebアプリVivliostyle Pub開発中](#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A0%E3%81%91%E3%81%A7%E6%9C%AC%E3%81%8C%E4%BD%9C%E3%82%8C%E3%82%8Bweb%E3%82%A2%E3%83%97%E3%83%AAvivliostyle-pub%E9%96%8B%E7%99%BA%E4%B8%AD)
-  - [Vivliostyle Pubでできること](#vivliostyle-pub%E3%81%A7%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8)
-  - [Vivliostyle Pubで作った本の印刷製本に](#vivliostyle-pub%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%9F%E6%9C%AC%E3%81%AE%E5%8D%B0%E5%88%B7%E8%A3%BD%E6%9C%AC%E3%81%AB)
-  - [まだアルファ版だけど、よろしければどうぞ](#%E3%81%BE%E3%81%A0%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E7%89%88%E3%81%A0%E3%81%91%E3%81%A9%E3%82%88%E3%82%8D%E3%81%97%E3%81%91%E3%82%8C%E3%81%B0%E3%81%A9%E3%81%86%E3%81%9E)
+- [Vivliostyle: ブラウザで動くオープンソースのCSS組版ツール](#vivliostyle-ブラウザで動くオープンソースのcss組版ツール)
+  - [CSS組版はかなり前から実現していたが…](#css組版はかなり前から実現していたが)
+  - [Webブラウザを利用した組版](#webブラウザを利用した組版)
+  - [オープンソース開発コミュニティー](#オープンソース開発コミュニティー)
+  - [Vivliostyle利用事例の紹介](#vivliostyle利用事例の紹介)
+- [CSS組版をもっと簡単にするためのプロジェクトVivliostyle Pub](#css組版をもっと簡単にするためのプロジェクトvivliostyle-pub)
+  - [今のVivliostyle CSS組版ツール](#今のvivliostyle-css組版ツール)
+  - [今のCSS組版ツールはエンジニアではない一般の人にとっては難しい](#今のcss組版ツールはエンジニアではない一般の人にとっては難しい)
+  - [ブラウザだけで本が作れるWebアプリVivliostyle Pub開発中](#ブラウザだけで本が作れるwebアプリvivliostyle-pub開発中)
+  - [Vivliostyle Pubでできること](#vivliostyle-pubでできること)
+  - [Vivliostyle Pubで作った本の印刷製本に](#vivliostyle-pubで作った本の印刷製本に)
+  - [まだアルファ版だけど、よろしければどうぞ](#まだアルファ版だけどよろしければどうぞ)
   - [開発が順調に進むように、応援よろしく！](#開発が順調に進むように応援よろしく)
 
 # 自己紹介 {.intro}
@@ -195,6 +195,6 @@ Vivliostyleはボランティアで開発されているオープンソース・
 
 - コミュニティ→ https://vivliostyle.org/ja/community/
 
-Vivliostyleのサービスやプロダクトのビジネス利用も歓迎。その相談やサポートについてはお問合せください。→メール窓口mail@vivlostyle.org
+Vivliostyleのサービスやプロダクトのビジネス利用も歓迎。その相談やサポートについてはお問合せください。→メール窓口<mail@vivliostyle.org>
 
 私たちについて→ https://vivliostyle.org/ja/about-us/
