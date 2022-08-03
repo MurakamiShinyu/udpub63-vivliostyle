@@ -58,26 +58,6 @@ CSS組版によりHTMLとCSSで紙の本も作れるということは、
 - 縦書きの本を横書きに変える
 - 総ルビにする、分かち書きにする、etc.
 
-<!--
-/* 色をハイコントラストにする */
-@page {
-  background: black;
-}
-:root {
-  color: white;
-}
-h1,h2,h3,h4,a {
-  color: yellow !important;
-}
--->
-
-<!--
-/* 縦書きに変える */
-:root {
-  writing-mode: vertical-rl;
-}
--->
-
 # Vivliostyle: ブラウザで動くオープンソースのCSS組版ツール
 
 ## CSS組版はかなり前から実現していたが…

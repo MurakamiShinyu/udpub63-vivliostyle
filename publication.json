@@ -7,12 +7,12 @@
   "conformsTo": "https://github.com/vivliostyle/vivliostyle-cli",
   "author": "MurakamiShinyu <murakami@vivliostyle.org>",
   "inLanguage": "ja",
-  "dateModified": "2022-08-02T21:38:10.994Z",
+  "dateModified": "2022-08-03T00:49:45.117Z",
   "name": "楽しくCSS組版を実現するオープンソースプロジェクト",
   "readingOrder": [
     {
       "url": "slide.html",
-      "name": "楽しくCSS組版を実現するオープン・ソースプロジェクト"
+      "name": "楽しくCSS組版を実現するオープンソースプロジェクト"
     }
   ],
   "resources": [],
