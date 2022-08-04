@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root {
-  --main-font-family: "Noto Sans CJK JP", "Hiragino Sans", "Meiryo", sans-serif;
+  --main-font-family: "Noto Sans CJK JP", "Hiragino Sans", "Yu Gothic", sans-serif;
   --code-font-family: "Noto Sans Mono CJK JP", "Andale Mono", monospace;
   --heading-color: #06a;
 }
@@ -14,10 +14,8 @@
 }
 
 @page {
-  /* width: 180mm (= 210mm - 15mm * 2) */
-  /* height: 124mm (= 148mm - 12mm * 2) */
   size: 210mm 148mm;
-  margin: 15mm 15mm;
+  margin: 15mm 13mm;
   font-size: 11pt;
   line-height: 1.2;
 

@@ -130,7 +130,7 @@ Vivliostyleが生まれる前から、CSS組版は一部では実用化されて
 
 アルファ版：https://vivliostyle-pub-develop.vercel.app/
 
-![Vivliostyle Pubで執筆中の画面](img/screenshot-vivpub.png){height=210}
+![Vivliostyle Pubで執筆中の画面](img/screenshot-vivpub.png){height=208}
 
 ## Vivliostyle Pubでできること
 
